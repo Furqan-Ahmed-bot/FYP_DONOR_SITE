@@ -1,7 +1,6 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, prefer_typing_uninitialized_variables, use_key_in_widget_constructors, must_be_immutable
 
 import 'dart:typed_data';
-
 import 'package:dashboard_final/pendingdonation.dart';
 import 'package:dashboard_final/profile.dart';
 import 'package:flutter/material.dart';
@@ -9,15 +8,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'Login.dart';
 import 'Services/donationServices.dart';
 import 'donationHistory.dart';
-import 'contacts.dart';
+
 import 'my_drawer_header.dart';
 import 'notification.dart';
-import './myprofile.dart';
+
 import 'griddashboard.dart';
 
-import 'EditProfile.dart';
+
 
 final List<DonationData> donations = [];
+
 
 class DonorAppBar extends StatefulWidget {
   int donorId;
@@ -34,6 +34,7 @@ class DonorAppBar extends StatefulWidget {
 }
 
 class _DonorAppBar extends State<DonorAppBar> {
+  
   @override
   void setState(VoidCallback fn) {
     // TODO: implement setState
@@ -200,6 +201,7 @@ class _DonorAppBar extends State<DonorAppBar> {
       ),
     );
   }
+  
 }
 
 enum DrawerSections {

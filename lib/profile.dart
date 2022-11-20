@@ -74,26 +74,23 @@ class _EditProfileState extends State<EditProfile> {
                       onTap: () {
                         chooseImage();
                       },
-                      child: Positioned(
-                          bottom: 0,
-                          right: 0,
-                          child: Container(
-                            height: 40,
-                            width: 40,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              border: Border.all(
-                                width: 4,
-                                color:
-                                    Theme.of(context).scaffoldBackgroundColor,
-                              ),
-                              color: Color(0xFFFF7643),
-                            ),
-                            child: Icon(
-                              Icons.edit,
-                              color: Colors.white,
-                            ),
-                          )),
+                      child: Container(
+                        height: 40,
+                        width: 40,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            width: 4,
+                            color:
+                                Theme.of(context).scaffoldBackgroundColor,
+                          ),
+                          color: Color(0xFFFF7643),
+                        ),
+                        child: Icon(
+                          Icons.edit,
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -122,15 +119,16 @@ class _EditProfileState extends State<EditProfile> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  RaisedButton(
+                  ElevatedButton(
+                    
                     onPressed: () {
                       updatedata();
                     },
-                    color: Color(0xFFFF7643),
-                    padding: EdgeInsets.symmetric(horizontal: 50),
-                    elevation: 2,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
+                    // color: Color(0xFFFF7643),
+                    // padding: EdgeInsets.symmetric(horizontal: 50),
+                    // elevation: 2,
+                    // shape: RoundedRectangleBorder(
+                    //     borderRadius: BorderRadius.circular(20)),
                     child: Text(
                       "SAVE",
                       style: TextStyle(
@@ -142,7 +140,7 @@ class _EditProfileState extends State<EditProfile> {
                   SizedBox(
                     height: 25,
                   ),
-                  RaisedButton(
+                  ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                           context,
@@ -157,11 +155,11 @@ class _EditProfileState extends State<EditProfile> {
                                   image.text)));
                       // updatedata();
                     },
-                    color: Color(0xFFFF7643),
-                    padding: EdgeInsets.symmetric(horizontal: 50),
-                    elevation: 2,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
+                    // color: Color(0xFFFF7643),
+                    // padding: EdgeInsets.symmetric(horizontal: 50),
+                    // elevation: 2,
+                    // shape: RoundedRectangleBorder(
+                    //     borderRadius: BorderRadius.circular(20)),
                     child: Text(
                       "Back",
                       style: TextStyle(

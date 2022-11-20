@@ -258,6 +258,7 @@ class _DonartionHistoryState extends State<PendingDonations> {
     return WillPopScope(
       onWillPop: () async => false,
       child: Scaffold(
+        backgroundColor: Color.fromARGB(255, 240, 234, 234),
         body: ListView(
           children: [
             Container(
@@ -293,149 +294,147 @@ class _DonartionHistoryState extends State<PendingDonations> {
                               margin: EdgeInsets.symmetric(
                                   vertical: 8, horizontal: 5),
                               elevation: 1.0,
-                              child: Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  child: Card(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(0.0),
+                              child: Card(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.circular(0.0),
+                                  ),
+                                   color: Color(0xFFFFFFFF),
+                                  // elevation: 10,
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: EdgeInsets.all(0),
+                                        child: snapshot
+                                                    .data![index].image ==
+                                                "abcd"
+                                            ? Container(
+                                                width:
+                                                    MediaQuery.of(context)
+                                                            .size
+                                                            .width *
+                                                        0.28,
+                                                height:
+                                                    MediaQuery.of(context)
+                                                            .size
+                                                            .width *
+                                                        0.28,
+                                                decoration:
+                                                    const BoxDecoration(
+                                                  image: DecorationImage(
+                                                      fit: BoxFit.fill,
+                                                      image: AssetImage(
+                                                          'assets/default.png')),
+                                                ),
+                                              )
+                                            : Container(
+                                                width:
+                                                    MediaQuery.of(context)
+                                                            .size
+                                                            .width *
+                                                        0.28,
+                                                height:
+                                                    MediaQuery.of(context)
+                                                            .size
+                                                            .width *
+                                                        0.28,
+                                                decoration: BoxDecoration(
+                                                  image: DecorationImage(
+                                                      fit: BoxFit.fill,
+                                                      image: MemoryImage(
+                                                          base64Decode(
+                                                              snapshot
+                                                                  .data![
+                                                                      index]
+                                                                  .image))),
+                                                ),
+                                              ),
                                       ),
-                                      color: Colors.white70,
-                                      elevation: 10,
-                                      child: Row(
+                                      Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: <Widget>[
-                                          Padding(
-                                            padding: EdgeInsets.all(padding1),
-                                            child: snapshot
-                                                        .data![index].image ==
-                                                    "abcd"
-                                                ? Container(
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            0.28,
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            0.28,
-                                                    decoration:
-                                                        const BoxDecoration(
-                                                      image: DecorationImage(
-                                                          fit: BoxFit.fill,
-                                                          image: AssetImage(
-                                                              'assets/default.png')),
-                                                    ),
-                                                  )
-                                                : Container(
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            0.28,
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            0.28,
-                                                    decoration: BoxDecoration(
-                                                      image: DecorationImage(
-                                                          fit: BoxFit.fill,
-                                                          image: MemoryImage(
-                                                              base64Decode(
-                                                                  snapshot
-                                                                      .data![
-                                                                          index]
-                                                                      .image))),
-                                                    ),
-                                                  ),
+                                          Container(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.5,
+                                            child: Padding(
+                                              padding: EdgeInsets.fromLTRB(
+                                                  padding1, padding2, 0, 0),
+                                              child: Text(
+                                                snapshot.data![index].name,
+                                                style: TextStyle(
+                                                  fontWeight:
+                                                      FontWeight.bold,
+                                                  fontSize: 18,
+                                                ),
+                                              ),
+                                            ),
                                           ),
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: <Widget>[
-                                              Container(
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.5,
-                                                child: Padding(
-                                                  padding: EdgeInsets.fromLTRB(
-                                                      padding1, padding2, 0, 0),
-                                                  child: Text(
-                                                    snapshot.data![index].name,
-                                                    style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 18,
-                                                    ),
-                                                  ),
+                                          Container(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.39,
+                                            child: Padding(
+                                              padding: EdgeInsets.fromLTRB(
+                                                  padding1,
+                                                  padding2,
+                                                  padding1,
+                                                  0),
+                                              child: Text(
+                                                'To ${snapshot.data![index].ngoName} on ${snapshot.data![index].date}',
+                                                style: TextStyle(
+                                                  fontSize: 14,
                                                 ),
                                               ),
-                                              Container(
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.5,
-                                                child: Padding(
-                                                  padding: EdgeInsets.fromLTRB(
-                                                      padding1,
-                                                      padding2,
-                                                      padding1,
-                                                      0),
-                                                  child: Text(
-                                                    'To ${snapshot.data![index].ngoName} on ${snapshot.data![index].date}',
-                                                    style: TextStyle(
-                                                      fontSize: 14,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          Column(
-                                            children: <Widget>[
-                                              Padding(
-                                                padding: EdgeInsets.fromLTRB(
-                                                    padding1, padding2, 0, 0),
-                                                child: Column(
-                                                  children: [
-                                                    Text(
-                                                      'Quantity',
-                                                      style: TextStyle(
-                                                        fontSize: 14,
-                                                      ),
-                                                    ),
-                                                    Text(
-                                                      snapshot.data![index]
-                                                          .quantity,
-                                                      style: TextStyle(
-                                                        fontSize: 14,
-                                                      ),
-                                                    ),
-                                                    SizedBox(
-                                                      height:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .height *
-                                                              0.01,
-                                                    ),
-                                                    Text(
-                                                      'Pending',
-                                                      style: TextStyle(
-                                                          fontSize: 15,
-                                                          color: Colors.red),
-                                                    )
-                                                  ],
-                                                ),
-                                              ),
-                                            ],
+                                            ),
                                           ),
                                         ],
-                                      ))));
+                                      ),
+                                      Column(
+                                        children: <Widget>[
+                                          Padding(
+                                            padding: EdgeInsets.fromLTRB(
+                                                0, padding2, 0, 0),
+                                            child: Column(
+                                              children: [
+                                                Text(
+                                                  'Quantity',
+                                                  style: TextStyle(
+                                                    fontSize: 14,
+                                                  ),
+                                                ),
+                                                Text(
+                                                  snapshot.data![index]
+                                                      .quantity,
+                                                  style: TextStyle(
+                                                    fontSize: 14,
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height:
+                                                      MediaQuery.of(context)
+                                                              .size
+                                                              .height *
+                                                          0.01,
+                                                ),
+                                                Text(
+                                                  'Pending',
+                                                  style: TextStyle(
+                                                      fontSize: 15,
+                                                      color: Colors.red),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  )));
                           // }
                           // return Text('');
                         });

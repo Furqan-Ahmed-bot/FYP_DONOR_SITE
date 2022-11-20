@@ -279,11 +279,36 @@ class _SignUpState extends State<SignUp> {
                     child: Container(
                       height: 50,
                       width: 300,
-                      child: RaisedButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(28),
-                        ),
-                        color: Color(0xFFFF7643),
+                      child: 
+                      // ElevatedButton(
+                      //   shape: RoundedRectangleBorder(
+                      //     borderRadius: BorderRadius.circular(28),
+                      //   ),
+                      //   color: Color(0xFFFF7643),
+                      //   child: Text(
+                      //     'SignUp',
+                      //     style: TextStyle(
+                      //       color: Colors.white,
+                      //       fontSize: 20,
+                      //       fontWeight: FontWeight.bold,
+                      //     ),
+                      //   ),
+                      //   onPressed: () async {
+                      //     // _firebaseMessaging.subscribeToTopic('registeruser');
+                          // data = await {
+                          //   'username': username.text,
+                          //   "email": email.text,
+                          //   'password': password.text,
+                          //   'address': address.text, 
+                          //   'contact': contact.text,
+                          //   "image": "abcd"
+                          // };
+    
+                          // vaildation();
+                         
+                      //   },
+                      // ),
+                      ElevatedButton(
                         child: Text(
                           'SignUp',
                           style: TextStyle(
@@ -292,9 +317,8 @@ class _SignUpState extends State<SignUp> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        onPressed: () async {
-                          // _firebaseMessaging.subscribeToTopic('registeruser');
-                          data = await {
+                        onPressed: ()async {
+                           data = await {
                             'username': username.text,
                             "email": email.text,
                             'password': password.text,
@@ -304,9 +328,8 @@ class _SignUpState extends State<SignUp> {
                           };
     
                           vaildation();
-                         
                         },
-                      ),
+                      )
                     ),
                   ),
                   // SizedBox(

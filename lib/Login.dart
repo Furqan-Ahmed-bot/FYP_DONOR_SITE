@@ -15,10 +15,9 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-
-  
   String? token1;
   bool ShowCircle = true;
+  bool isloading = false;
   FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
   final emailController = TextEditingController();
 
@@ -47,7 +46,7 @@ class _LoginState extends State<Login> {
   static String p =
       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
   static RegExp regExp = new RegExp(p);
-  void vaildation() {
+  Future<void> vaildation() async {
     if (emailController.text.isEmpty && passwordController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -78,9 +77,10 @@ class _LoginState extends State<Login> {
           content: Text("Password Is Too Short"),
         ),
       );
-    } else {
-      LoginUser();
-    }
+    } 
+    // else {
+    //   LoginUser();
+    // }
   }
 
   Widget build(BuildContext context) {
@@ -136,48 +136,59 @@ class _LoginState extends State<Login> {
                     width: MediaQuery.of(context).size.width * 0.8,
                     child: Column(
                       children: [
-                      
                         TextFormField(
                           controller: emailController,
                           decoration: InputDecoration(
-                            labelText: "Email",
-                            hintText: "Enter Your Email",
-                            
-                            floatingLabelBehavior: FloatingLabelBehavior.always,
-                             suffixIcon: Padding(padding: EdgeInsets.fromLTRB(0, 0, 25, 0),
-                             child: Icon(Icons.email,),),
-                            contentPadding: EdgeInsets.symmetric(horizontal: 42, vertical: 20),
-                            enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(28),
-                            borderSide: BorderSide(color: Colors.black),
-                            gapPadding: 10),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(28),
-                              borderSide: BorderSide(color: Colors.black),
-                              gapPadding: 10,)
-                          ),
+                              labelText: "Email",
+                              hintText: "Enter Your Email",
+                              floatingLabelBehavior:
+                                  FloatingLabelBehavior.always,
+                              suffixIcon: Padding(
+                                padding: EdgeInsets.fromLTRB(0, 0, 25, 0),
+                                child: Icon(
+                                  Icons.email,
+                                ),
+                              ),
+                              contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 42, vertical: 20),
+                              enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(28),
+                                  borderSide: BorderSide(color: Colors.black),
+                                  gapPadding: 10),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(28),
+                                borderSide: BorderSide(color: Colors.black),
+                                gapPadding: 10,
+                              )),
                         ),
                         SizedBox(
                             height: MediaQuery.of(context).size.height * 0.04),
-                            TextFormField(
+                        TextFormField(
                           controller: passwordController,
                           obscureText: true,
                           decoration: InputDecoration(
-                            labelText: "Password",
-                            hintText: "Enter Your Password",
-                            floatingLabelBehavior: FloatingLabelBehavior.always,
-                            suffixIcon: Padding(padding: EdgeInsets.fromLTRB(0, 0, 25, 0),
-                             child: Icon(Icons.password  ,),),
-                            contentPadding: EdgeInsets.symmetric(horizontal: 42, vertical: 20),
-                            enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(28),
-                            borderSide: BorderSide(color: Colors.black),
-                            gapPadding: 10),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(28),
-                              borderSide: BorderSide(color: Colors.black),
-                              gapPadding: 10,)
-                          ),
+                              labelText: "Password",
+                              hintText: "Enter Your Password",
+                              floatingLabelBehavior:
+                                  FloatingLabelBehavior.always,
+                              suffixIcon: Padding(
+                                padding: EdgeInsets.fromLTRB(0, 0, 25, 0),
+                                child: Icon(
+                                  Icons.password,
+                                ),
+                              ),
+                              contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 42, vertical: 20),
+                              enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(28),
+                                  borderSide: BorderSide(color: Colors.black),
+                                  gapPadding: 10),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(28),
+                                borderSide: BorderSide(color: Colors.black),
+                                gapPadding: 10,
+                              )),
                         ),
-                       
                       ],
                     ),
                   ),
@@ -187,28 +198,29 @@ class _LoginState extends State<Login> {
                   child: Container(
                     height: MediaQuery.of(context).size.height * 0.07,
                     width: MediaQuery.of(context).size.width * 0.8,
-                    child: RaisedButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(28),
-                      ),
-                      color: Color(0xFFFF7643),
+                    child: isloading==true?Center(child: CircularProgressIndicator(),): ElevatedButton(
+                      //  RoundedRectangleBorder(
+                      //   borderRadius: BorderRadius.circular(28),
+                      // ),
+                      // color: Color(0xFFFF7643),
                       // ignore: prefer_const_constructors
                       child: Text(
-                        'Login',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                              'Login',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                       onPressed: () {
-                        ShowCircle = !ShowCircle;
-                        if (ShowCircle)
-                          CircularProgressIndicator(value: 0.0);
-                        else
-                          CircularProgressIndicator(value: 1.0);
-
-                        vaildation();
+                        
+                        vaildation().then((_) {
+                          LoginUser().whenComplete(() {
+                            setState(() {
+                              isloading=false;
+                            });
+                          });
+                        });
                       },
                     ),
                   ),
@@ -227,14 +239,17 @@ class _LoginState extends State<Login> {
                               MaterialPageRoute(
                                   builder: (context) => SignUp()));
                         },
-                        child: Text('SignUp' , style: TextStyle(color: Color(0xFFFF7643),),)),
+                        child: Text(
+                          'SignUp',
+                          style: TextStyle(
+                            color: Color(0xFFFF7643),
+                          ),
+                        )),
                   ],
                 ),
-
-                 Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    
                     TextButton(
                         onPressed: () {
                           Navigator.push(
@@ -242,7 +257,12 @@ class _LoginState extends State<Login> {
                               MaterialPageRoute(
                                   builder: (context) => SignUp()));
                         },
-                        child: Text('Forgot Password?' , style: TextStyle(color: Color(0xFFFF7643),),)),
+                        child: Text(
+                          'Forgot Password?',
+                          style: TextStyle(
+                            color: Color(0xFFFF7643),
+                          ),
+                        )),
                   ],
                 )
               ],
@@ -255,6 +275,9 @@ class _LoginState extends State<Login> {
 
   Future LoginUser() async {
     int flag = 0;
+    setState(() {
+      isloading=true;
+    });
     String url = 'https://edonations.000webhostapp.com/api-login.php';
     var data = {
       'email': emailController.text,
@@ -267,7 +290,6 @@ class _LoginState extends State<Login> {
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text('Incorrect Email or Password!')));
       } else {
-
         updatefcm();
 
         SharedPreferences preferences = await SharedPreferences.getInstance();
@@ -291,7 +313,9 @@ class _LoginState extends State<Login> {
     }
   }
 
-   Future updatefcm() async {
+
+
+  Future updatefcm() async {
     String url = 'https://edonations.000webhostapp.com/api-update-fcm.php';
     var data = {
       'email': emailController.text,
@@ -301,9 +325,12 @@ class _LoginState extends State<Login> {
     var msg = jsonDecode(result.body);
     if (result.statusCode == 200) {
       if (msg['status'] != false) {
+        CircularProgressIndicator();
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text('You logged in as ${emailController.text}')));
       }
+    } else {
+      return CircularProgressIndicator();
     }
   }
 }

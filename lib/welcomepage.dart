@@ -39,11 +39,12 @@ class _WelcomeState extends State<Welcome> {
                    child: Container(
                      height: 50,
                      width: 300,
-                     child: RaisedButton(
-                       shape: RoundedRectangleBorder(
-                         borderRadius: BorderRadius.circular(28),
-                       ),
-                       color: Color(0xFFFF7643),
+                     child:
+                      ElevatedButton(
+                      //  shape: RoundedRectangleBorder(
+                      //    borderRadius: BorderRadius.circular(28),
+                      //  ),
+                      //  color: Color(0xFFFF7643),
                        child: Text(
                          'Login',
                          style: TextStyle(
@@ -67,11 +68,11 @@ class _WelcomeState extends State<Welcome> {
                    child: Container(
                      height: 50,
                      width: 300,
-                     child: RaisedButton(
-                       shape: RoundedRectangleBorder(
-                         borderRadius: BorderRadius.circular(28),
-                       ),
-                       color: Color(0xFFFF7643),
+                     child: ElevatedButton(
+                      //  shape: RoundedRectangleBorder(
+                      //    borderRadius: BorderRadius.circular(28),
+                      //  ),
+                      //  color: Color(0xFFFF7643),
                        child: Text(
                          'SignUp',
                          style: TextStyle(

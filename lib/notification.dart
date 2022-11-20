@@ -76,17 +76,23 @@ class _ChangePasswordState extends State<ChangePassword> {
               ),
               Padding(
                 padding: const EdgeInsets.all(30.0),
-                child: RaisedButton(
-                  color: Color(0xFFFF7643),
-                  child: Text("Update" , style: TextStyle(color: Colors.white),),
-                  onPressed: () {
+                child: 
+                // ElevatedButton(
+                //   color: Color(0xFFFF7643),
+                //   child: Text("Update" , style: TextStyle(color: Colors.white),),
+                //   onPressed: () {
                     
-                    changePass();
-                    clearText();
+                //     changePass();
+                //     clearText();
                     
-                  },
+                //   },
                   
-                ),
+                // ),
+                ElevatedButton(child: Text("Update" , style: TextStyle(color: Colors.blue),),
+                onPressed: (){
+                  changePass();
+                  clearText();
+                },)
               ),
               
               // Text(widget.email),

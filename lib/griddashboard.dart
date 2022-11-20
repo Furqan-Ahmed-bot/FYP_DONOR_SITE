@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'dashboard/list.dart';
 import 'dashboard/products.dart';
 import 'nearbyNgo.dart';
@@ -81,15 +82,19 @@ class _DashboardState extends State<Dashboard> {
                     
                   ),
                   
-                  SizedBox(
-                    width: width*0.2,
-                  ),
-                  CircleAvatar(
-                    maxRadius: height*0.045,
+                  // SizedBox(
+                  //   width: width*0.2,
+                  // ),
+                  Spacer(),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 30),
                     child: CircleAvatar(
                       maxRadius: height*0.045,
-                      backgroundImage:
-                          MemoryImage(base64Decode(localmage)),
+                      child: CircleAvatar(
+                        maxRadius: height*0.045,
+                        backgroundImage:
+                            MemoryImage(base64Decode(localmage)),
+                      ),
                     ),
                   ),
                 ],
@@ -147,5 +152,12 @@ class _DashboardState extends State<Dashboard> {
         ],
       ),
     );
+  }
+  Future getdata() async{
+
+   SharedPreferences preferences = await SharedPreferences.getInstance();
+   var username = preferences.getString('username'); 
+   print('This is${username}');
+
   }
 }

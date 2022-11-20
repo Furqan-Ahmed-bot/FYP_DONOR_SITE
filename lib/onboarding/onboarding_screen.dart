@@ -36,24 +36,37 @@ class OnBoardingPage extends StatelessWidget {
               footer: Container(
                 height: 50,
                 width: 200,
-                child: RaisedButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(28),
-                  ),
-                  color: Color(0xFFFF7643),
-                  child: Text(
+                // child: ElevatedButton(
+                //   shape: RoundedRectangleBorder(
+                //     borderRadius: BorderRadius.circular(28),
+                //   ),
+                //   color: Color(0xFFFF7643),
+                  // child: Text(
+                  //   'Start',
+                  //   style: TextStyle(
+                  //     color: Colors.white,
+                  //     fontSize: 20,
+                  //     fontWeight: FontWeight.bold,
+                  //   ),
+                  // ),
+                //   onPressed: () {
+                //     Navigator.push(context,
+                //         MaterialPageRoute(builder: (context) => Welcome()));
+                //   },
+                // ),
+                child: ElevatedButton(child: Text(
                     'Start',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
-                  ),
-                  onPressed: () {
+                  ), onPressed: (){
+
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Welcome()));
-                  },
-                ),
+                       MaterialPageRoute(builder: (context) => Welcome()));
+                  },),
+                
               ),
               //  ButtonWidget(
 

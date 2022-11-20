@@ -11,11 +11,11 @@ class ButtonWidget extends StatelessWidget {
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) => RaisedButton(
+  Widget build(BuildContext context) => ElevatedButton(
         onPressed: onClicked,
-        color: Theme.of(context).primaryColor,
-        shape: StadiumBorder(),
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+        // color: Theme.of(context).primaryColor,
+        // shape: StadiumBorder(),
+        // padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
         child: Text(
           text,
           style: TextStyle(color: Colors.white, fontSize: 16),
